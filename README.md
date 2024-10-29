@@ -84,9 +84,9 @@ Obraz aplikacji jest również opublikowany w Docker Hub w celu łatwego dostęp
 - **`POST /predict-json`**: Akceptuje obiekt JSON zawierający listę danych wejściowych do przewidywania.
 - **`POST /predict-csv`**: Akceptuje plik CSV zawierający dane wejściowe do przewidywania.
 
-### Przykłady
+## Przykłady
 
-## Plik CSV
+### Plik CSV
 Przygotuj plik CSV, np. o nazwie `data.csv`. Nastepnie wykonaj żądanie poprzez:
 ```bash
 curl -X POST "http://127.0.0.1:8000/predict-csv" -F "file=@data.csv"
