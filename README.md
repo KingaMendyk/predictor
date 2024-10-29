@@ -11,6 +11,7 @@ Można uruchomić ją lokalnie, w kontenerze Docker lub pobrać obraz z Docker H
   - [Uruchamianie z Dockerem](#uruchamianie-z-dockerem)
   - [Użycie obrazu z Docker Hub](#użycie-obrazu-z-docker-hub)
 - [Interface API](#interface-api)
+- [Przykłady](#przykłady)
 
 ## Funkcje
 - Akceptuje dane JSON i CSV do przewidywań
@@ -83,3 +84,10 @@ Obraz aplikacji jest również opublikowany w Docker Hub w celu łatwego dostęp
 - **`POST /predict-json`**: Akceptuje obiekt JSON zawierający listę danych wejściowych do przewidywania.
 - **`POST /predict-csv`**: Akceptuje plik CSV zawierający dane wejściowe do przewidywania.
 
+### Przykłady
+
+## Plik CSV
+Przygotuj plik CSV, np. o nazwie `data.csv`. Nastepnie wykonaj żądanie poprzez:
+```bash
+curl -X POST "http://127.0.0.1:8000/predict-csv" -F "file=@data.csv"
+```
