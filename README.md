@@ -1,6 +1,8 @@
 # Predictor
 Ten projekt to prosta aplikacja predykcyjna uczenia maszynowego oparta na FastAPI, która akceptuje dane w postaci JSON lub CSV i zwraca przewidywane wartości. 
 Można uruchomić ją lokalnie, w kontenerze Docker lub pobrać obraz z Docker Hub w celu łatwej konfiguracji.
+Dokumentacja modelu znajduje się tutaj [Dokumentacja_Analizator_Wyników](https://github.com/user-attachments/files/17633292/Dokumentacja_Analizator_Wynikow.pdf)
+
 
 ## Spis treści
 - [Funkcje](#funkcje)
