@@ -33,6 +33,8 @@ Można uruchomić ją lokalnie, w kontenerze Docker lub pobrać obraz z Docker H
 
 ### Uruchamianie lokalnie
 
+Uruchom aplikację lokalnie przy pomocy terminala. W katalogu ze sklonowanym repozytorium wykonaj następujące polecenia:
+
 1. **Zainstaluj wymagania**:
     ```bash
     pip install -r requirements.txt
@@ -46,8 +48,11 @@ Można uruchomić ją lokalnie, w kontenerze Docker lub pobrać obraz z Docker H
 3. **Uzyskaj dostęp do aplikacji**:
    - Aplikacja dostępna jest pod `http://127.0.0.1:8000`.
    - Dostęp do dokumentacji można uzyskać pod adresem `http://127.0.0.1:8000/docs` do interaktywnego testowania.
+  W celu przesłania danych do aplikacji uruchom nowe okno terminala i skorzystaj z sekcji [Przykłady](#przykłady). 
 
 ### Uruchamianie z Dockerem
+
+Upewnij się, że uruchomiony jest Docker Engine w aplikacji Docker Desktop.
 
 1. **Zbuduj obraz Dockera**:
     ```bash
@@ -61,10 +66,11 @@ Można uruchomić ją lokalnie, w kontenerze Docker lub pobrać obraz z Docker H
 
 3. **Uzyskaj dostęp do aplikacji**:
    - Aplikacja dostępna jest pod `http://127.0.0.1:8000`.
+  W celu przesłania danych do aplikacji uruchom nowe okno terminala i skorzystaj z sekcji [Przykłady](#przykłady). 
 
 ### Użycie obrazu z Docker Hub
 
-Obraz aplikacji jest również opublikowany w Docker Hub w celu łatwego dostępu. Wykonaj następujące kroki, aby go pobrać i uruchomić:
+Obraz aplikacji jest opublikowany w Docker Hub. Wykonaj następujące kroki, aby go pobrać i uruchomić:
 
 1. **Pobierz obraz Dockera**:
     ```bash
@@ -78,16 +84,44 @@ Obraz aplikacji jest również opublikowany w Docker Hub w celu łatwego dostęp
 
 3. **Uzyskaj dostęp do aplikacji**:
    - Aplikacja dostępna jest pod `http://127.0.0.1:8000`.
+  W celu przesłania danych do aplikacji uruchom nowe okno terminala i skorzystaj z sekcji [Przykłady](#przykłady).
 
 ## Interface API
 
-- **`POST /predict-json`**: Akceptuje obiekt JSON zawierający listę danych wejściowych do przewidywania.
+- **`POST /predict-json`**: Akceptuje plik JSON zawierający listę danych wejściowych do przewidywania.
 - **`POST /predict-csv`**: Akceptuje plik CSV zawierający dane wejściowe do przewidywania.
 
 ## Przykłady
 
-### Plik CSV
-Przygotuj plik CSV, np. o nazwie `data.csv`. Nastepnie wykonaj żądanie poprzez:
+### FastAPI
+
+#### Plik CSV
+
+Przygotuj plik CSV, np. o nazwie `data.csv`. Upewnij się, że plik znajduje się w tym samym katalogu, z którego uruchamiasz polecenie curl, lub podaj pełną ścieżkę do pliku. Następnie wykonaj polecenie poprzez:
 ```bash
 curl -X POST "http://127.0.0.1:8000/predict-csv" -F "file=@data.csv"
 ```
+
+#### Plik JSON
+
+Przygotuj plik JSON, np. o nazwie `data.json`. Upewnij się, że plik znajduje się w tym samym katalogu, z którego uruchamiasz polecenie curl, lub podaj pełną ścieżkę do pliku. Następnie wykonaj polecenie poprzez:
+```bash
+curl -X POST "http://127.0.0.1:8000/predict-json" -F "file=@data.json"
+```
+
+### CLI
+
+#### Plik CSV
+
+Przygotuj plik CSV, np. o nazwie `data.csv`. Upewnij się, że plik znajduje się w tym samym katalogu, z którego uruchamiasz polecenie curl, lub podaj pełną ścieżkę do pliku. Następnie wykonaj polecenie poprzez:
+```bash
+python predictor.py predict-csv data.csv 
+```
+
+#### Plik JSON
+
+Przygotuj plik JSON, np. o nazwie `data.json`. Upewnij się, że plik znajduje się w tym samym katalogu, z którego uruchamiasz polecenie curl, lub podaj pełną ścieżkę do pliku. Następnie wykonaj polecenie poprzez:
+```bash
+python predictor.py predict-json data.json 
+```
+
