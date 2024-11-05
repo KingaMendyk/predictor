@@ -106,7 +106,7 @@ curl -X POST "http://127.0.0.1:8000/predict-csv" -F "file=@data.csv"
 
 Przygotuj plik JSON, np. o nazwie `data.json`. Upewnij się, że plik znajduje się w tym samym katalogu, z którego uruchamiasz polecenie curl, lub podaj pełną ścieżkę do pliku. Następnie wykonaj polecenie poprzez:
 ```bash
-curl -X POST "http://127.0.0.1:8000/predict-json" -F "file=@data.json"
+curl -X POST "http://127.0.0.1:8000/predict-json" -H "Content-Type: application/json" -d @data.json
 ```
 
 ### CLI
