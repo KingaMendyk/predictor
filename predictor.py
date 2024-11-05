@@ -5,7 +5,7 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 import json
 from fastapi import FastAPI, UploadFile, HTTPException
 from pydantic import BaseModel
-from typing import List
+from typing import List, Dict
 from io import StringIO
 import typer
 
@@ -19,7 +19,7 @@ cli = typer.Typer()
 
 # Define data model for JSON input
 class DataModel(BaseModel):
-    data: List[List[float]]
+    data: Dict[str, List[float]]
 
 
 def clean_data(data):
