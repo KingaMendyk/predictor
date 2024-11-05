@@ -5,7 +5,6 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 import json
 from fastapi import FastAPI, UploadFile, HTTPException
 from pydantic import BaseModel
-from typing import List, Dict
 from io import StringIO
 import typer
 
@@ -19,7 +18,7 @@ cli = typer.Typer()
 
 # Define data model for JSON input
 class DataModel(BaseModel):
-    data: Dict[str, List[float]]
+    data: dict
 
 
 def clean_data(data):
@@ -78,9 +77,11 @@ async def predict_csv(file: UploadFile):
 
 # CLI command for JSON input.
 @cli.command("predict-json")
-def cli_predict_json(data: str):
+def cli_predict_json(data_path: str):
     try:
-        json_data = json.loads(data)
+        with open(data_path, 'r') as f:
+            json_data = json.load(f)
+
         df = pd.DataFrame(json_data["data"])
         df = clean_data(df)
         predictions = predict(df)
@@ -102,4 +103,4 @@ def cli_predict_csv(filepath: str):
 
 
 if __name__ == "__main__":
-    typer.run(cli)
+    cli()
