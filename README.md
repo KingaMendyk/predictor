@@ -104,7 +104,30 @@ curl -X POST "http://127.0.0.1:8000/predict-csv" -F "file=@data.csv"
 
 #### Plik JSON
 
-Przygotuj plik JSON, np. o nazwie `data.json`. Upewnij się, że plik znajduje się w tym samym katalogu, z którego uruchamiasz polecenie curl, lub podaj pełną ścieżkę do pliku. Następnie wykonaj polecenie poprzez:
+Przygotuj plik JSON, np. o nazwie `data.json`. Upewnij się, że wszystkie dane znajdują sie pod polem "data", przykładowo:
+```json
+{
+	"data":
+  {
+    "rownames": [1],
+    "gender": ["male"],
+    "ethnicity": ["other"],
+    "fcollege": ["yes"],
+    "mcollege": ["no"],
+    "home": ["yes"],
+    "urban": ["yes"],
+    "unemp": [6.199999809],
+    "wage": [8.090000153],
+    "distance": [0.200000003],
+    "tuition": [0.889150023],
+    "education": [12],
+    "income": ["high"],
+    "region": ["other"]
+  }
+}
+```
+
+Upewnij się, że plik znajduje się w tym samym katalogu, z którego uruchamiasz polecenie curl, lub podaj pełną ścieżkę do pliku. Następnie wykonaj polecenie poprzez:
 ```bash
 curl -X POST "http://127.0.0.1:8000/predict-json" -H "Content-Type: application/json" -d @data.json
 ```
@@ -120,7 +143,30 @@ python predictor.py predict-csv data.csv
 
 #### Plik JSON
 
-Przygotuj plik JSON, np. o nazwie `data.json`. Upewnij się, że plik znajduje się w tym samym katalogu, z którego uruchamiasz polecenie curl, lub podaj pełną ścieżkę do pliku. Następnie wykonaj polecenie poprzez:
+Przygotuj plik JSON, np. o nazwie `data.json`. Upewnij się, że wszystkie dane znajdują sie pod polem "data", przykładowo:
+```json
+{
+	"data":
+  {
+    "rownames": [1],
+    "gender": ["male"],
+    "ethnicity": ["other"],
+    "fcollege": ["yes"],
+    "mcollege": ["no"],
+    "home": ["yes"],
+    "urban": ["yes"],
+    "unemp": [6.199999809],
+    "wage": [8.090000153],
+    "distance": [0.200000003],
+    "tuition": [0.889150023],
+    "education": [12],
+    "income": ["high"],
+    "region": ["other"]
+  }
+}
+```
+ 
+Upewnij się, że plik znajduje się w tym samym katalogu, z którego uruchamiasz polecenie curl, lub podaj pełną ścieżkę do pliku. Następnie wykonaj polecenie poprzez:
 ```bash
 python predictor.py predict-json data.json 
 ```
